@@ -6,26 +6,22 @@ const db = [
   {
     id: 1,
     input: "input",
-    letter: "a",
-    customWord: ""
+    letter: "n",
+    customWord: "iput"
   },
-  {
-    id: 2,
-    input: "lalal",
-    letter: "l",
-    customWord: ""
-  }
 ]
 app.use(json())
+
 app.get('/api/db/read', (req, res) => {
   res.send(db)
 })
+
 app.post('/api/db/add', (req, res) => {
   db.push({
     id: db.length + 1,
     input: req.body.input,
     letter: req.body.letter,
-    customWord: ""
+    customWord: req.body.input.split(req.body.letter).join('')
   })
   res.send(db)
 })
