@@ -21,7 +21,7 @@ app.post('/api/db/add', (req, res) => {
     id: db.length + 1,
     input: req.body.input,
     letter: req.body.letter,
-    customWord: req.body.input.split(req.body.letter).join('')
+    customWord: req.body.input.toLowerCase().split(req.body.letter).join('')
   })
   res.send(db)
 })
